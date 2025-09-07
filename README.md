@@ -97,7 +97,7 @@ Sample Model Output:
 ```
 Validation Accuracy : 0.84
 Test Accuracy : 0.83
----
+```
 
 ## 📦 Requirements
 
