@@ -8,7 +8,7 @@ The pipeline includes **data cleaning, train/validation/test splitting, feature 
 ## 📂 Project Structure
 
 ```
-mlops-first-assignment/
+mlops-second-assignment/
 │── weather-dataset/                # Raw dataset (CSV)
 │── preprocessing.py                # Preprocessing pipeline script
 │── requirements.txt                # Project dependencies
