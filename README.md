@@ -6,14 +6,17 @@ The pipeline includes **data cleaning, train/validation/test splitting, feature 
 ---
 
 ## 📂 Project Structure
-
 ```
 mlops-second-assignment/
-│── weather-dataset/                # Raw dataset (CSV)
-│── preprocessing.py                # Preprocessing pipeline script
-│── requirements.txt                # Project dependencies
-│── README.md                       # Project documentation
-│── .gitignore                      # Git ignored files
+│── __pycache__/                   # Python cache files (gitignored)
+│── weather-dataset/               # Raw dataset (CSV)
+│── analysis.ipynb                 # Updated exploratory/data analysis notebook
+│── preprocessing.py               # Complete preprocessing pipeline script
+│── train_model.py                 # Complete training pipeline script
+│── main.py                        # Entry point for running the full pipeline
+│── requirements.txt               # Project dependencies
+│── README.md                       # Updated project documentation
+│── .gitignore                     # Git ignored files (e.g., __pycache__)
 ```
 
 ---
@@ -49,15 +52,30 @@ mlops-second-assignment/
 ## 🔄 Workflow
 
 flowchart TD
-    A[📂 Raw Weather Dataset] --> B[🧹 Data Cleaning]
-    B --> C[✂️ Train/Val/Test Split by Year]
-    C --> D[⚙️ Numeric Preprocessing<br>(Imputation + Scaling)]
-    C --> E[🔤 Categorical Preprocessing<br>(One-Hot Encoding)]
-    D --> F[✅ Preprocessed Features]
-    E --> F
-    F --> G[🤖 Logistic Regression Training]
-    G --> H[📈 Validation Evaluation]
-    G --> I[🧪 Test Evaluation]
+    subgraph RAW_DATA["📂 Raw Data"]
+        A[weather-dataset.csv]
+    end
+    subgraph PREPROCESSING["🧹 Preprocessing"]
+        B[Data Cleaning]
+        C[Train/Val/Test Split by Year]
+        D[Numeric Features<br>(Imputation + Scaling)]
+        E[Categorical Features<br>(One-Hot Encoding)]
+        F[✅ Preprocessed Features]
+    end
+    subgraph TRAINING["🤖 Model Training"]
+        G[Logistic Regression]
+    end
+    subgraph EVALUATION["📊 Evaluation"]
+        H[Validation Metrics]
+        I[Test Metrics]
+    end
+    %% Connections
+    A --> B --> C
+    C --> D --> F
+    C --> E --> F
+    F --> G --> H
+    G --> I
+
 
 
 ## 🛠️ Installation
@@ -121,3 +139,4 @@ scikit-learn
 * Extend pipeline for model persistence and deployment (MLOps best practices).
 
 ---
+
