@@ -49,34 +49,6 @@ mlops-second-assignment/
 
 ---
 
-## 🔄 Workflow
-
-flowchart TD
-    subgraph RAW_DATA["📂 Raw Data"]
-        A[weather-dataset.csv]
-    end
-    subgraph PREPROCESSING["🧹 Preprocessing"]
-        B[Data Cleaning]
-        C[Train/Val/Test Split by Year]
-        D[Numeric Features<br>(Imputation + Scaling)]
-        E[Categorical Features<br>(One-Hot Encoding)]
-        F[✅ Preprocessed Features]
-    end
-    subgraph TRAINING["🤖 Model Training"]
-        G[Logistic Regression]
-    end
-    subgraph EVALUATION["📊 Evaluation"]
-        H[Validation Metrics]
-        I[Test Metrics]
-    end
-    %% Connections
-    A --> B --> C
-    C --> D --> F
-    C --> E --> F
-    F --> G --> H
-    G --> I
-
-
 
 ## 🛠️ Installation
 
@@ -139,4 +111,5 @@ scikit-learn
 * Extend pipeline for model persistence and deployment (MLOps best practices).
 
 ---
+
 
