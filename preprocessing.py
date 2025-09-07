@@ -77,7 +77,8 @@ def preprocess_categorical(train_inputs, val_inputs, test_inputs, df):
             columns=encoded_cols,
             index=inputs.index
         )
-        return pd.concat([inputs, transformed], axis=1)
+        # Drop original categorical cols and add encoded ones
+        return pd.concat([inputs.drop(categorical_cols, axis=1), transformed], axis=1)
 
     # Encode train, validation, and test splits
     train_inputs = encode_and_concat(train_inputs)

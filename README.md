@@ -40,14 +40,32 @@ mlops-second-assignment/
    * Modular functions for each step (`load_and_clean_data`, `split_by_year`, `separate_inputs_targets`, etc.).
    * Final `preprocess_pipeline()` to execute the full process.
 
+5. **Model Training**
+   * Logistic Regression with **scikit-learn**.
+   * Validation and test evaluation with accuracy, precision, recall, F1-score, and confusion matrix
+
 ---
+
+## 🔄 Workflow
+
+flowchart TD
+    A[📂 Raw Weather Dataset] --> B[🧹 Data Cleaning]
+    B --> C[✂️ Train/Val/Test Split by Year]
+    C --> D[⚙️ Numeric Preprocessing<br>(Imputation + Scaling)]
+    C --> E[🔤 Categorical Preprocessing<br>(One-Hot Encoding)]
+    D --> F[✅ Preprocessed Features]
+    E --> F
+    F --> G[🤖 Logistic Regression Training]
+    G --> H[📈 Validation Evaluation]
+    G --> I[🧪 Test Evaluation]
+
 
 ## 🛠️ Installation
 
 Clone the repository and install dependencies:
 
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/faryasir07/MLOps-Assignment-2>
 pip install -r requirements.txt
 ```
 
@@ -55,11 +73,18 @@ pip install -r requirements.txt
 
 ## 📊 Usage
 
-Run the preprocessing pipeline:
+Run ONLY preprocessing pipeline:
 
 ```bash
 python preprocessing.py
 ```
+
+Run the complete pipeline (preprocessing + training):
+
+```bash
+python main.py
+```
+
 
 Expected output (shapes may vary depending on dataset updates):
 
@@ -68,7 +93,10 @@ Train shape: (73814, 75) (73814,)
 Validation shape: (8197, 75) (8197,)
 Test shape: (1244, 75) (1244,)
 ```
-
+Sample Model Output:
+```
+Validation Accuracy : 0.84
+Test Accuracy : 0.83
 ---
 
 ## 📦 Requirements
@@ -87,8 +115,9 @@ scikit-learn
 
 ## 🔮 Next Steps
 
-* Train ML models (Logistic Regression, Random Forest, XGBoost).
-* Evaluate using accuracy, precision, recall, and F1-score.
+* Add hyperparameter tuning (GridSearchCV) for Logistic Regression.
+* Train additional ML models (Random Forest, XGBoost, LightGBM).
+* Save & load models with joblib/pickle.
 * Extend pipeline for model persistence and deployment (MLOps best practices).
 
 ---
